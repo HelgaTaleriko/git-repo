@@ -41,16 +41,45 @@
     padding: 20px;
     flex-direction: column;
     background-color: blanchedalmond;
+    border: 1px black solid;
+
 }
 span{
     font-size: 20px;
     font-family: "Arima Koshi";
 }
 .favorite-repo{
-    width: 100px;
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: auto;
+    height: auto;
+}
+.favorite-repo-item{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    background-color: #9ceac7;
+    gap: 5px;
+    padding: 10px;
+}
+.favorite-wrapper-element{
     border: 1px black solid;
-    margin-top: 16px;
+
+    display: flex;
+}
+.btn-favorite-del {
+    font-size: 30px;
+    font-family: "Andale Mono";
+    font-weight: bold;
+    color: brown;
+    width: 50px;
+    border: none;
+    outline: none;
+    background-color: #eec2c8;
+}
+.btn-favorite-del:active{
+    background-color: thistle;
 }
 
 

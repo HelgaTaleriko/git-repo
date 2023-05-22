@@ -37,26 +37,34 @@ export class View {
 
     }
 
-    createRepoList(userData) { //такой формат нужен для выбранных репо, для списка нужен только с названиями репо
+    createRepoList(userData) { //cоздаем список элементов
         const userElement = this.createElement('div', 'repo-list')
         userElement.innerHTML = `<span class='repo-list-name'>Name: ${userData.name}</span>`;
 
         this.usersList.append(userElement)
-        userElement.addEventListener('click', ()=> {
+        userElement.addEventListener('click', () => {
+            //вешаем обработчик на элементы списка чтобы переносились в другой
+            this.favoriteWrapperElement = this.createElement('div', 'favorite-wrapper-element')
+            const favoriteRepoItem = this.createElement('div', 'favorite-repo-item')
+            const btnFavoriteDel = this.createElement('button', 'btn-favorite-del')
 
-            console.log('click')
-            // let clone= userElement.cloneNode(true)
-            // console.log(clone)
-            const favoriteRepoElement = this.createElement('div', 'favorite-repo')
-            favoriteRepoElement.innerHTML = `<span class='repo-list-name'>Name: ${userData.name}</span>
+            favoriteRepoItem.innerHTML = `<span class='repo-list-name'>Name: ${userData.name}</span>
                                  <span class="repo-list-owner">Owner: ${userData.owner.login}</span>
                                  <span class="repo-list-stars">Stars: ${userData.stargazers_count}</span>`;
+            favoriteRepoItem.id = userData.name
+            btnFavoriteDel.innerHTML = 'X'
+            this.favoriteWrapperElement.append(favoriteRepoItem, btnFavoriteDel)
+            this.favoriteRepo.append(this.favoriteWrapperElement)
+            this.searchInput.value = ''
 
-            this.favoriteRepo.append(favoriteRepoElement)
+            btnFavoriteDel.addEventListener('click', (event) => {  //кнопка удалить
+                event.target.parentElement.remove()
 
-
+            })
+            this.usersList.innerHTML = ''
 
         })
+
 
     }
 
