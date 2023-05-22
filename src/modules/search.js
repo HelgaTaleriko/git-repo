@@ -1,4 +1,3 @@
-const USER_PER_PAGE = 5;
 
 export class Search {
 
@@ -8,19 +7,18 @@ export class Search {
 
     }
 
-    async loadRepo() {
+    async loadRepo() {  // загрузка списка репо
         const searchValue = this.view.searchInput.value;
         let users;
         if (searchValue) {
             return await fetch(`https://api.github.com/search/repositories?q=${searchValue}&per-page=5`)
                 .then((res) => {
                     if (res.ok) {
+                        this.clearUsers()
                         res.json().then(res => {
-                            users = res.items;
+                            users = res.items.slice(0,5);
                             users.forEach(user => this.view.createRepoList(user))
                         })
-                    } else {
-
                     }
                 })
 
@@ -34,7 +32,7 @@ export class Search {
         this.view.usersList.innerHTML = ''
     }
 
-    debounce(func, wait, immediate) {
+    debounce(func, wait, immediate) { // отложеная отправка
         let timeout
         return function () {
             const context = this, args = arguments
