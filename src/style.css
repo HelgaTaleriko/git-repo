@@ -1,0 +1,59 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+.app { padding: 25px; }
+
+.title { text-align: center; }
+.main {
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    gap:50px
+}
+
+.search-line {
+    flex-direction: column;
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+}
+.search-input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 20px;
+    padding: 8px 15px;
+}
+.users-wrapper {
+    padding: 0;
+    width: 25%;
+}
+
+.users {
+
+}
+
+
+.repo-list {
+    display: flex;
+    list-style: none;
+    padding: 20px;
+    flex-direction: column;
+    background-color: blanchedalmond;
+}
+span{
+    font-size: 20px;
+    font-family: "Arima Koshi";
+}
+.favorite-repo{
+    width: 100px;
+    height: 200px;
+    border: 1px black solid;
+    margin-top: 16px;
+}
+
+
+
+
+
